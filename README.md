@@ -1,4 +1,6 @@
 AI Agent Profile Builder
+
+
 A web app where you can visually build and configure your own AI agent by combining different profiles, skills, layers, and providers — all through a simple drag-and-drop interface.
 Pick your components, drop them onto the canvas, give your agent a name, and save it. Come back later, load it up, and keep building.
 
@@ -37,6 +39,8 @@ npm run dev
 
 # Build for production
 npm run build
+
+
 
 Project Structure
 src/
