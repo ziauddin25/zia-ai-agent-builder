@@ -1,74 +1,58 @@
-# React + TypeScript + Vite
+AI Agent Profile Builder
+A web app where you can visually build and configure your own AI agent by combining different profiles, skills, layers, and providers — all through a simple drag-and-drop interface.
+Pick your components, drop them onto the canvas, give your agent a name, and save it. Come back later, load it up, and keep building.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
 
-Currently, two official plugins are available:
+Drag-and-drop canvas — drag components from the sidebar and drop them onto the canvas to compose your agent
+Accordion sidebar — components organized into 4 clean categories: Profile, Skills, Layers, Provider
+Single & multi-select — Profile and Provider are single-select, Skills and Layers support multiple selections
+Auto-populated agent name — selecting a profile automatically fills the agent name, fully editable
+Reorder on canvas — drag and reorder your selected skills and layers directly on the canvas
+Save agents — saved agents persist to localStorage so they're there when you come back
+Saved agents drawer — bottom drawer to view all saved agents, load them back onto the canvas, or delete them
+Clear all — wipe all saved agents in one click
+Session timer — tracks elapsed time since the app was opened
+Reload — re-fetches all configuration data on demand
+Toast notifications — non-blocking feedback for all user actions
+Fully responsive — drag-and-drop on desktop and tablet, tap-to-add via dropdown on mobile
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React 19 with TypeScript
+Tailwind CSS v4
+shadcn/ui — Button, Input, Accordion
+@dnd-kit — drag-and-drop and sortable interactions
+Lucide React — icons
+localStorage — agent persistence
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Getting Started
+bash# Install dependencies
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Start development server
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Build for production
+npm run build
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Project Structure
+src/
+├── types/index.ts              → All TypeScript interfaces
+├── components/
+│   ├── ui/
+│   │   ├── button.tsx
+│   │   ├── input.tsx
+│   │   └── accordion.tsx
+│   ├── Toast.tsx
+│   ├── Header.tsx
+│   ├── SidePanel.tsx
+│   ├── Canvas.tsx
+│   ├── AgentCard.tsx
+│   └── SavedAgents.tsx
+└── App.tsx
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-# ai-agent
+License
+MIT
