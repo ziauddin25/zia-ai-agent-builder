@@ -1,3 +1,4 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Brain, Zap, Layers, Bot, X, GripVertical } from 'lucide-react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -16,20 +17,8 @@ export default function AgentCard({ id, type, name, subtitle, onRemove }) {
     };
     const config = typeConfig[type];
     const Icon = config.icon;
-    return (<div ref={setNodeRef} style={style} className={cn('group relative flex items-center gap-2 rounded-xl border p-2.5 transition-all duration-200 lg:gap-3 lg:p-3', config.border, config.bg, isDragging && `z-50 scale-105 shadow-xl ring-2 ${config.ring}`)}>
-      <GripVertical className="h-4 w-4 shrink-0 text-slate-600 group-hover:text-slate-400"/>
-      <Icon className={cn('h-4 w-4 shrink-0 lg:h-5 lg:w-5', config.color)}/>
-
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-slate-100">{name}</p>
-        {subtitle && (<p className="truncate text-xs text-slate-500">{subtitle}</p>)}
-      </div>
-
-      <button onClick={(e) => {
-            e.stopPropagation();
-            onRemove();
-        }} className="shrink-0 rounded-md p-1 text-slate-600 transition-colors cursor-pointer hover:bg-slate-700 hover:text-slate-300">
-        <X size={14}/>
-      </button>
-    </div>);
+    return (_jsxs("div", { ref: setNodeRef, style: style, className: cn('group relative flex items-center gap-2 rounded-xl border p-2.5 transition-all duration-200 lg:gap-3 lg:p-3', config.border, config.bg, isDragging && `z-50 scale-105 shadow-xl ring-2 ${config.ring}`), children: [_jsx(GripVertical, { className: "h-4 w-4 shrink-0 text-slate-600 group-hover:text-slate-400" }), _jsx(Icon, { className: cn('h-4 w-4 shrink-0 lg:h-5 lg:w-5', config.color) }), _jsxs("div", { className: "min-w-0 flex-1", children: [_jsx("p", { className: "truncate text-sm font-medium text-slate-100", children: name }), subtitle && (_jsx("p", { className: "truncate text-xs text-slate-500", children: subtitle }))] }), _jsx("button", { onClick: (e) => {
+                    e.stopPropagation();
+                    onRemove();
+                }, className: "shrink-0 rounded-md p-1 text-slate-600 transition-colors cursor-pointer hover:bg-slate-700 hover:text-slate-300", children: _jsx(X, { size: 14 }) })] }));
 }

@@ -1,3 +1,4 @@
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useState, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react';
 import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy, } from '@dnd-kit/sortable';
@@ -132,86 +133,15 @@ export const Canvas = forwardRef(function Canvas({ data }, ref) {
             setAgentName(`${profile.name} Agent`);
         }
     }, [profile, hasItems]);
-    return (<>
-      <Toast toast={toast}/>
-
-      <div className="mb-3 flex flex-col gap-2 sm:mb-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h2 className="text-base font-semibold text-white md:text-lg">Agent Canvas</h2>
-          <p className="text-xs text-slate-500">
-            Drop components here to configure your agent
-          </p>
-        </div>
-
-        {hasItems && (<div className="flex items-center gap-2">
-            <Input placeholder="Agent name..." value={agentName} onChange={(e) => setAgentName(e.target.value)} className="w-full sm:w-48"/>
-            <Button onClick={handleSaveAgent}>
-              <Save className="h-4 w-4"/>
-              <span className="hidden sm:inline">Save</span>
-            </Button>
-          </div>)}
-      </div>
-
-      <div ref={setNodeRef} className={cn('flex flex-1 flex-col overflow-y-auto rounded-2xl border-2 border-dashed p-3 transition-all duration-300 w-full lg:flex-1 lg:p-5', hasItems && 'h-auto flex-1', isOver
-            ? 'border-violet-500/60 bg-violet-500/5 shadow-lg shadow-violet-500/10'
-            : hasItems
-                ? 'border-slate-700/50 bg-slate-900/50'
-                : 'border-slate-800 bg-slate-900/30')}>
-        {!hasItems && (<div className="flex flex-1 flex-col items-center justify-center gap-3 text-slate-600">
-            <div className="rounded-full border-2 border-dashed border-slate-700 p-4">
-              <Plus className="h-8 w-8"/>
-            </div>
-            <div className="text-center">
-              <p className="text-sm font-medium text-slate-400">Drop components here</p>
-              <p className="mt-1 text-xs text-slate-600">
-                Drag items from the sidebar to build your agent
-              </p>
-            </div>
-          </div>)}
-
-        {hasItems && (<div className="flex flex-col gap-4 pb-2">
-            {selectedProfile && profile && (<div>
-                <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  <Brain className="h-3 w-3"/> Profile
-                </p>
-                <AgentCard id={`profile-card:${selectedProfile}`} type="profile" name={profile.name} subtitle={profile.description} onRemove={handleRemoveProfile}/>
-              </div>)}
-
-            {selectedSkills.length > 0 && (<div>
-                <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  <Zap className="h-3 w-3"/> Skills ({selectedSkills.length})
-                </p>
-                <SortableContext items={skillIds} strategy={verticalListSortingStrategy}>
-                  <div className="flex flex-col gap-2">
-                    {selectedSkills.map((skillId) => {
-                    const skill = data?.skills.find((s) => s.id === skillId);
-                    return (<AgentCard key={skillId} id={`skill-card:${skillId}`} type="skill" name={skill?.name || skillId} subtitle={skill?.category} onRemove={() => handleRemoveSkill(skillId)}/>);
-                })}
-                  </div>
-                </SortableContext>
-              </div>)}
-
-            {selectedLayers.length > 0 && (<div>
-                <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  <Layers className="h-3 w-3"/> Layers ({selectedLayers.length})
-                </p>
-                <SortableContext items={layerIds} strategy={verticalListSortingStrategy}>
-                  <div className="flex flex-col gap-2">
-                    {selectedLayers.map((layerId) => {
-                    const layer = data?.layers.find((l) => l.id === layerId);
-                    return (<AgentCard key={layerId} id={`layer-card:${layerId}`} type="layer" name={layer?.name || layerId} subtitle={layer?.type} onRemove={() => handleRemoveLayer(layerId)}/>);
-                })}
-                  </div>
-                </SortableContext>
-              </div>)}
-
-            {selectedProvider && (<div>
-                <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  <Bot className="h-3 w-3"/> Provider
-                </p>
-                <AgentCard id={`provider-card:${selectedProvider}`} type="provider" name={selectedProvider} onRemove={handleRemoveProvider}/>
-              </div>)}
-          </div>)}
-      </div>
-    </>);
+    return (_jsxs(_Fragment, { children: [_jsx(Toast, { toast: toast }), _jsxs("div", { className: "mb-3 flex flex-col gap-2 sm:mb-4 sm:flex-row sm:items-center sm:justify-between", children: [_jsxs("div", { children: [_jsx("h2", { className: "text-base font-semibold text-white md:text-lg", children: "Agent Canvas" }), _jsx("p", { className: "text-xs text-slate-500", children: "Drop components here to configure your agent" })] }), hasItems && (_jsxs("div", { className: "flex items-center gap-2", children: [_jsx(Input, { placeholder: "Agent name...", value: agentName, onChange: (e) => setAgentName(e.target.value), className: "w-full sm:w-48" }), _jsxs(Button, { onClick: handleSaveAgent, children: [_jsx(Save, { className: "h-4 w-4" }), _jsx("span", { className: "hidden sm:inline", children: "Save" })] })] }))] }), _jsxs("div", { ref: setNodeRef, className: cn('flex flex-1 flex-col overflow-y-auto rounded-2xl border-2 border-dashed p-3 transition-all duration-300 w-full lg:flex-1 lg:p-5', hasItems && 'h-auto flex-1', isOver
+                    ? 'border-violet-500/60 bg-violet-500/5 shadow-lg shadow-violet-500/10'
+                    : hasItems
+                        ? 'border-slate-700/50 bg-slate-900/50'
+                        : 'border-slate-800 bg-slate-900/30'), children: [!hasItems && (_jsxs("div", { className: "flex flex-1 flex-col items-center justify-center gap-3 text-slate-600", children: [_jsx("div", { className: "rounded-full border-2 border-dashed border-slate-700 p-4", children: _jsx(Plus, { className: "h-8 w-8" }) }), _jsxs("div", { className: "text-center", children: [_jsx("p", { className: "text-sm font-medium text-slate-400", children: "Drop components here" }), _jsx("p", { className: "mt-1 text-xs text-slate-600", children: "Drag items from the sidebar to build your agent" })] })] })), hasItems && (_jsxs("div", { className: "flex flex-col gap-4 pb-2", children: [selectedProfile && profile && (_jsxs("div", { children: [_jsxs("p", { className: "mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500", children: [_jsx(Brain, { className: "h-3 w-3" }), " Profile"] }), _jsx(AgentCard, { id: `profile-card:${selectedProfile}`, type: "profile", name: profile.name, subtitle: profile.description, onRemove: handleRemoveProfile })] })), selectedSkills.length > 0 && (_jsxs("div", { children: [_jsxs("p", { className: "mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500", children: [_jsx(Zap, { className: "h-3 w-3" }), " Skills (", selectedSkills.length, ")"] }), _jsx(SortableContext, { items: skillIds, strategy: verticalListSortingStrategy, children: _jsx("div", { className: "flex flex-col gap-2", children: selectedSkills.map((skillId) => {
+                                                const skill = data?.skills.find((s) => s.id === skillId);
+                                                return (_jsx(AgentCard, { id: `skill-card:${skillId}`, type: "skill", name: skill?.name || skillId, subtitle: skill?.category, onRemove: () => handleRemoveSkill(skillId) }, skillId));
+                                            }) }) })] })), selectedLayers.length > 0 && (_jsxs("div", { children: [_jsxs("p", { className: "mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500", children: [_jsx(Layers, { className: "h-3 w-3" }), " Layers (", selectedLayers.length, ")"] }), _jsx(SortableContext, { items: layerIds, strategy: verticalListSortingStrategy, children: _jsx("div", { className: "flex flex-col gap-2", children: selectedLayers.map((layerId) => {
+                                                const layer = data?.layers.find((l) => l.id === layerId);
+                                                return (_jsx(AgentCard, { id: `layer-card:${layerId}`, type: "layer", name: layer?.name || layerId, subtitle: layer?.type, onRemove: () => handleRemoveLayer(layerId) }, layerId));
+                                            }) }) })] })), selectedProvider && (_jsxs("div", { children: [_jsxs("p", { className: "mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500", children: [_jsx(Bot, { className: "h-3 w-3" }), " Provider"] }), _jsx(AgentCard, { id: `provider-card:${selectedProvider}`, type: "provider", name: selectedProvider, onRemove: handleRemoveProvider })] }))] }))] })] }));
 });

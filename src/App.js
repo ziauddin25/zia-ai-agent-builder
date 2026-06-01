@@ -1,3 +1,4 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { DndContext, DragOverlay } from '@dnd-kit/core';
 import { GripVertical, Brain, Zap, Layers, Bot } from 'lucide-react';
@@ -65,24 +66,7 @@ function App() {
         setActiveItem(null);
         canvasRef.current?.handleDragEnd(event);
     }, []);
-    return (<DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-      <div className="flex h-screen flex-col bg-slate-950 text-slate-100">
-        <Header onReload={fetchAPI} loading={loading} sessionTime={sessionTime} sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}/>
-
-        <div className="flex flex-1 overflow-hidden">
-          <SidePanel data={data} loading={loading} error={error} open={sidebarOpen} onClose={() => setSidebarOpen(false)} onAddItem={handleAddItem}/>
-
-          <main className="flex flex-1 flex-col overflow-hidden p-3 lg:p-6">
-            <Canvas ref={canvasRef} data={data}/>
-          </main>
-        </div>
-        <SavedAgents data={data} canvasRef={canvasRef}/>
-      </div>
-
-      <DragOverlay dropAnimation={null}>
-        {activeItem && (<DragOverlayItem name={activeItem.name} subtitle={activeItem.subtitle} type={activeItem.type}/>)}
-      </DragOverlay>
-    </DndContext>);
+    return (_jsxs(DndContext, { onDragStart: handleDragStart, onDragEnd: handleDragEnd, children: [_jsxs("div", { className: "flex h-screen flex-col bg-slate-950 text-slate-100", children: [_jsx(Header, { onReload: fetchAPI, loading: loading, sessionTime: sessionTime, sidebarOpen: sidebarOpen, onToggleSidebar: () => setSidebarOpen(!sidebarOpen) }), _jsxs("div", { className: "flex flex-1 overflow-hidden", children: [_jsx(SidePanel, { data: data, loading: loading, error: error, open: sidebarOpen, onClose: () => setSidebarOpen(false), onAddItem: handleAddItem }), _jsx("main", { className: "flex flex-1 flex-col overflow-hidden p-3 lg:p-6", children: _jsx(Canvas, { ref: canvasRef, data: data }) })] }), _jsx(SavedAgents, { data: data, canvasRef: canvasRef })] }), _jsx(DragOverlay, { dropAnimation: null, children: activeItem && (_jsx(DragOverlayItem, { name: activeItem.name, subtitle: activeItem.subtitle, type: activeItem.type })) })] }));
 }
 export default App;
 const overlayTypeConfig = {
@@ -94,12 +78,5 @@ const overlayTypeConfig = {
 function DragOverlayItem({ name, subtitle, type }) {
     const config = overlayTypeConfig[type];
     const Icon = config.icon;
-    return (<div className={cn('flex cursor-grabbing items-center gap-3 rounded-lg border p-2.5 shadow-xl overflow-hidden', config.shadow, config.border, config.bg)}>
-      <GripVertical className="h-3.5 w-3.5 shrink-0 text-slate-400"/>
-      <Icon className={cn('h-4 w-4 shrink-0', config.color)}/>
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-slate-200">{name}</p>
-        {subtitle && (<p className="truncate text-xs text-slate-500">{subtitle}</p>)}
-      </div>
-    </div>);
+    return (_jsxs("div", { className: cn('flex cursor-grabbing items-center gap-3 rounded-lg border p-2.5 shadow-xl overflow-hidden', config.shadow, config.border, config.bg), children: [_jsx(GripVertical, { className: "h-3.5 w-3.5 shrink-0 text-slate-400" }), _jsx(Icon, { className: cn('h-4 w-4 shrink-0', config.color) }), _jsxs("div", { className: "min-w-0 flex-1", children: [_jsx("p", { className: "truncate text-sm font-medium text-slate-200", children: name }), subtitle && (_jsx("p", { className: "truncate text-xs text-slate-500", children: subtitle }))] })] }));
 }
