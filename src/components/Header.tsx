@@ -1,5 +1,6 @@
 import { Timer, RefreshCw, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
+import Logo from '../assets/ailogo.png';
 
 interface HeaderProps {
   onReload: () => void;
@@ -23,13 +24,18 @@ export default function Header({ onReload, loading, sessionTime, sidebarOpen, on
         >
           {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
-        <div>
-          <h1 className="text-lg font-bold text-white md:text-xl">
-            AI Agent <span className="text-violet-400">Builder</span>
-          </h1>
-          <p className="hidden text-xs text-slate-500 sm:block">
-            Drag components to build your custom agent
-          </p>
+        <div className="flex items-center gap-2">
+          <div className="w-[70px] h-[5px]">
+            <img src='../assets/ailogo.png' alt="logo" className='w-full h-full object-cover' />
+          </div>
+          <div>
+            <h1 className="text-lg font-bold text-white md:text-xl">
+              AI Agent <span className="text-violet-400">Builder </span> 
+            </h1>
+            <p className="hidden text-xs text-slate-500 sm:block">
+              Drag components to build your custom agent 
+            </p>
+          </div>
         </div>
       </div>
 
